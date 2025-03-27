@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/swiper-bundle.min.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+
+<body class="body js-body">
+  <!-- header -->
+  <header id="header" class="header js-header">
+    <div class="header__inner">
+      <h1 class="header-logo">
+        <a href="index.html" class="header-logo__link">header</a>
+      </h1>
+
+      <button type="button" class="header-hamburger js-header-hamburger" aria-controls="header-nav"
+        aria-expanded="false" aria-label="メニューを開く">
+        <span class="header-hamburger__line"></span>
+        <span class="u-visually-hidden">メニューを開閉</span>
+      </button>
+
+      <nav id="header-nav" class="header-nav js-header-nav" aria-label="メインナビゲーション">
+        <ul class="header-nav__list">
+          <li class="header-nav__item">
+            <a href="#accordion" class="header-nav__link js-header-nav__link">accordion</a>
+          </li>
+          <li class="header-nav__item">
+            <a href="#dropdown" class="header-nav__link js-header-nav__link">dropdown</a>
+          </li>
+          <li class="header-nav__item">
+            <a href="#tab" class="header-nav__link js-header-nav__link">tab</a>
+          </li>
+          <li class="header-nav__item">
+            <a href="#modal-window" class="header-nav__link js-header-nav__link">modal</a>
+          </li>
+          <li class="header-nav__item">
+            <a href="#slider" class="header-nav__link js-header-nav__link">slider</a>
+          </li>
+          <li class="header-nav__item">
+            <a href="#contact" class="header-nav__link header-nav__link--contact js-header-nav__link">contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- header end -->
+
+  <main>
+    <!-- mv -->
+    <section id="mv" class="mv">
+      <div class="l-container">
+        <div class="mv__inner">
+          <h2 class="c-heading-lv2 c-heading-lv2--center">Main Visual</h2>
+        </div>
+      </div>
+    </section>
+    <!-- mv end -->
+
+    <!-- accordion -->
+    <section id="accordion" class="accordion js-accordion l-section">
+      <div class="l-container">
+        <h2 class="c-heading-lv2 c-heading-lv2--center">accordion</h2>
+        <div class="accordion__inner l-inner">
+          <details class="accordion__item js-accordion__item">
+            <summary class="accordion__header js-accordion__header" aria-controls="body01" aria-expanded="false">
+              <span class="accordion__title">accordion</span>
+            </summary>
+            <div id="body01" class="accordion__body js-accordion__body" aria-hidden="true">
+              <p class="accordion__text">
+                アコーディオンは、クリックすると隠れていたコンテンツが展開されるインターフェース要素です。FAQセクションなどでよく使用されます。
+                CSSでmax-heightを調整し、JavaScriptでクリックイベントを設定することで開閉を制御できます。適切なaria-expandedとaria-hiddenを付与し、キーボード操作にも対応させるとユーザーにとって使いやすくなります。
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion__item js-accordion__item">
+            <summary class="accordion__header js-accordion__header" aria-controls="body02" aria-expanded="false">
+              <span class="accordion__title">dropdown</span>
+            </summary>
+            <div id="body02" class="accordion__body js-accordion__body" aria-hidden="true">
+              <p class="accordion__text">
+                ドロップダウンメニューは、クリックまたはホバーで開閉するナビゲーション要素の一つです。主にナビゲーションバーやフォームで選択肢を表示するために使用されます。
+                CSSではvisibilityやopacityを活用してスタイルを制御し、JavaScriptではクリックイベントを利用して開閉の動作を実装します。また、アクセシビリティを考慮し、キーボード操作やWAI-ARIA属性を適用することが推奨されます。
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion__item js-accordion__item">
+            <summary class="accordion__header js-accordion__header" aria-controls="body03" aria-expanded="false">
+              <span class="accordion__title">tab</span>
+            </summary>
+            <div id="body03" class="accordion__body js-accordion__body" aria-hidden="true">
+              <p class="accordion__text">
+                タブは、複数のコンテンツを切り替えて表示するUIコンポーネントです。通常、ボタンやリスト要素でタブを作成し、クリックすると対応するコンテンツを表示します。
+                JavaScriptでは、is-activeクラスの切り替えを行い、CSSで選択中のタブと非表示のコンテンツを制御します。キーボード操作をサポートするために、aria-selectedやaria-controlsを設定すると、アクセシビリティが向上します。
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion__item js-accordion__item">
+            <summary class="accordion__header js-accordion__header" aria-controls="body04" aria-expanded="false">
+              <span class="accordion__title">modal</span>
+            </summary>
+            <div id="body04" class="accordion__body js-accordion__body" aria-hidden="true">
+              <p class="accordion__text">
+                モーダルは、ポップアップのように画面の中央に表示されるUI要素で、ユーザーの操作を妨げることなく追加情報を表示する際に使用されます。
+                モーダルの開閉はJavaScriptで制御し、背景のオーバーレイを追加してフォーカスをモーダル内に限定することで、ユーザビリティを向上させます。閉じるボタンやESCキーでのクローズ処理も重要です。
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion__item js-accordion__item">
+            <summary class="accordion__header js-accordion__header" aria-controls="body05" aria-expanded="false">
+              <span class="accordion__title">slider</span>
+            </summary>
+            <div id="body05" class="accordion__body js-accordion__body" aria-hidden="true">
+              <p class="accordion__text">
+                スライダーは、画像やコンテンツを横または縦にスライドして表示するUIコンポーネントです。カルーセルとも呼ばれ、商品の紹介やギャラリーに使われます。
+                CSSアニメーションやJavaScriptのイベントを使用してスライドを制御し、ユーザーがボタンやスワイプ操作で移動できるように設計します。オートプレイ機能やアクセシビリティ対応を考慮することも重要です。
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+    <!-- accordion end -->
+
+    <!-- dropdown -->
+    <section id="dropdown" class="dropdown js-dropdown l-section">
+      <div class="l-container">
+        <h2 class="c-heading-lv2 c-heading-lv2--center">dropdown</h2>
+        <div class="dropdown__inner l-inner">
+          <h3 class="dropdown-logo">
+            <a href="#dropdown" class="dropdown-logo__link">dropdown</a>
+          </h3>
+
+          <button type="button" class="dropdown-hamburger js-dropdown-hamburger" aria-controls="dropdown-nav"
+            aria-expanded="false" aria-label="メニューを開く">
+            <span class="dropdown-hamburger__line"></span>
+            <span class="u-visually-hidden">メニューを開閉</span>
+          </button>
+
+          <nav id="dropdown-nav" class="dropdown-nav js-dropdown-nav" aria-label="メインナビゲーション">
+            <ul class="dropdown-nav__list">
+              <li class="dropdown-nav__item js-dropdown-nav__item">
+                <button type="button" class="dropdown-nav__header js-dropdown-nav__header" aria-controls="menu01"
+                  aria-haspopup="true" aria-expanded="false">
+                  menu01
+                </button>
+                <ul id="menu01" class="dropdown-body js-dropdown-body" aria-hidden="true">
+                  <li class="dropdown-body__item">
+                    <a href="#accordion" class="dropdown-body__link js-dropdown-body__link">accordion</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#dropdown" class="dropdown-body__link js-dropdown-body__link">dropdown</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#tab" class="dropdown-body__link js-dropdown-body__link">tab</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#modal-window" class="dropdown-body__link js-dropdown-body__link">modal</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#slider" class="dropdown-body__link js-dropdown-body__link">slider</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#contact" class="dropdown-body__link js-dropdown-body__link">contact</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="dropdown-nav__item js-dropdown-nav__item">
+                <button type="button" class="dropdown-nav__header js-dropdown-nav__header" aria-controls="menu02"
+                  aria-haspopup="true" aria-expanded="false">
+                  menu02
+                </button>
+                <ul id="menu02" class="dropdown-body js-dropdown-body" aria-hidden="true">
+                  <li class="dropdown-body__item">
+                    <a href="#accordion" class="dropdown-body__link js-dropdown-body__link">accordion</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#dropdown" class="dropdown-body__link js-dropdown-body__link">dropdown</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#tab" class="dropdown-body__link js-dropdown-body__link">tab</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#modal-window" class="dropdown-body__link js-dropdown-body__link">modal</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#slider" class="dropdown-body__link js-dropdown-body__link">slider</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#contact" class="dropdown-body__link js-dropdown-body__link">contact</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="dropdown-nav__item js-dropdown-nav__item">
+                <button type="button" class="dropdown-nav__header js-dropdown-nav__header" aria-controls="menu03"
+                  aria-haspopup="true" aria-expanded="false">
+                  menu03
+                </button>
+                <ul id="menu03" class="dropdown-body js-dropdown-body" aria-hidden="true">
+                  <li class="dropdown-body__item">
+                    <a href="#accordion" class="dropdown-body__link js-dropdown-body__link">accordion</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#dropdown" class="dropdown-body__link js-dropdown-body__link">dropdown</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#tab" class="dropdown-body__link js-dropdown-body__link">tab</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#modal-window" class="dropdown-body__link js-dropdown-body__link">modal</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#slider" class="dropdown-body__link js-dropdown-body__link">slider</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#contact" class="dropdown-body__link js-dropdown-body__link">contact</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="dropdown-nav__item js-dropdown-nav__item">
+                <button type="button" class="dropdown-nav__header js-dropdown-nav__header" aria-controls="menu04"
+                  aria-haspopup="true" aria-expanded="false">
+                  menu04
+                </button>
+                <ul id="menu04" class="dropdown-body js-dropdown-body" aria-hidden="true">
+                  <li class="dropdown-body__item">
+                    <a href="#accordion" class="dropdown-body__link js-dropdown-body__link">accordion</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#dropdown" class="dropdown-body__link js-dropdown-body__link">dropdown</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#tab" class="dropdown-body__link js-dropdown-body__link">tab</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#modal-window" class="dropdown-body__link js-dropdown-body__link">modal</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#slider" class="dropdown-body__link js-dropdown-body__link">slider</a>
+                  </li>
+                  <li class="dropdown-body__item">
+                    <a href="#contact" class="dropdown-body__link js-dropdown-body__link">contact</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </section>
+    <!-- dropdown end -->
+
+    <!-- tab -->
+    <section id="tab" class="tab js-tab l-section">
+      <div class="l-container">
+        <h2 class="c-heading-lv2 c-heading-lv2--center">tab</h2>
+        <div class="tab__inner l-inner">
+          <nav class="tab-nav" aria-label="タブナビゲーション" role="tablist">
+            <button type="button" id="tab01" class="tab-nav__header js-tab-nav__header is-active"
+              aria-controls="tabpanel01" aria-expanded="true" aria-selected="true" role="tab">
+              tab01
+            </button>
+            <button type="button" id="tab02" class="tab-nav__header js-tab-nav__header" aria-controls="tabpanel02"
+              aria-expanded="false" aria-selected="false" role="tab">
+              tab02
+            </button>
+            <button type="button" id="tab03" class="tab-nav__header js-tab-nav__header" aria-controls="tabpanel03"
+              aria-expanded="false" aria-selected="false" role="tab">
+              tab03
+            </button>
+          </nav>
+
+          <div class="tab-contents">
+            <section id="tabpanel01" class="tab-contents__body js-tab-contents__body is-active" aria-labelledby="tab01"
+              aria-hidden="false" role="tabpanel">
+              <h3 class="tab-contents__title">HTML（HyperText Markup Language）</h3>
+              <p class="tab-contents__text">
+                HTMLは、Webページの構造を定義するためのマークアップ言語です。Webサイトを構築する際の基本となるもので、文書の意味や関係性を示すためのタグを用いて記述します。例えば、見出し、段落、リンク、画像、リストなどの要素を使用し、コンテンツを構築します。
+                また、HTMLにはフォームやボタンなど、ユーザーとやり取りをするための要素もあります。さらに、セマンティックタグを使うことで、Webページの構造をわかりやすく整理できます。
+                HTML自体にはデザインの指定機能はなく、基本的にCSSと組み合わせて見た目を整えます。また、JavaScriptを使用することで、動的な処理を加えることも可能です。
+              </p>
+            </section>
+
+            <section id="tabpanel02" class="tab-contents__body js-tab-contents__body" aria-labelledby="tab02"
+              aria-hidden="true" role="tabpanel">
+              <h3 class="tab-contents__title">CSS（Cascading Style Sheets）</h3>
+              <p class="tab-contents__text">
+                CSSは、HTMLで作成したWebページのデザインやレイアウトを指定するスタイルシート言語です。文字のフォントや色、大きさ、行間、背景の設定、ボックスの余白、要素の配置などを制御できます。
+                また、CSSにはレスポンシブデザインを実現するための機能もあり、メディアクエリを使って画面サイズごとにスタイルを調整できます。さらに、関数を活用すれば、画面幅に応じてフォントサイズやレイアウトを柔軟に調整できます。
+                CSSでは、疑似クラスを使用することで、マウス操作やキーボード操作に応じたスタイルの変更も可能です。また、アニメーションを使うことで、スムーズな動きを追加できます。
+                近年では、CSSだけで実装可能な要素も増えており、ニュースティッカーやアコーディオンなどもCSSのみで動作させることができます。
+              </p>
+            </section>
+
+            <section id="tabpanel03" class="tab-contents__body js-tab-contents__body" aria-labelledby="tab03"
+              aria-hidden="true" role="tabpanel">
+              <h3 class="tab-contents__title">JavaScript</h3>
+              <p class="tab-contents__text">
+                JavaScriptは、Webページに動的な動作を追加するためのプログラミング言語です。ユーザーの操作に応じたインタラクティブな動作を実装できます。例えば、ボタンをクリックするとメニューが開閉する、フォームに入力されたデータをリアルタイムでチェックする、スクロールに応じてアニメーションを実行するなどの処理が可能です。
+                JavaScriptはDOMを操作することで、HTML要素を追加・変更・削除できます。例えば、要素を取得し、クラスを切り替えれば、タブメニューやアコーディオン、ドロップダウンメニューの開閉を制御できます。
+                また、イベントリスナーを使えば、クリックやキー入力、マウスホバーなどの操作に応じて動作を変更できます。キーボード操作に対応する場合は、特定のキーを押した際の挙動を指定できます。
+                JavaScriptは、WAI-ARIAを活用することでアクセシビリティを向上させることもできます。例えば、アコーディオンの開閉状態を示したり、適切に設定してキーボード操作を可能にしたりすることで、誰でも使いやすいWebサイトを作ることができます。
+                このように、HTMLがWebページの骨組みを作り、CSSがデザインを整え、JavaScriptが動きを加えることで、より快適なWeb体験を提供できます。
+              </p>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- tab end -->
+
+    <!-- modal -->
+    <section id="modal-window" class="modal-window js-modal-window l-section">
+      <div class="l-container">
+        <h2 class="c-heading-lv2 c-heading-lv2--center">modal</h2>
+        <div class="modal-window__inner l-inner">
+          <nav class="modal__nav" aria-label="モーダルナビゲーション">
+            <button type="button" class="modal__button modal__button--open js-modal-open"
+              aria-controls="modal01">modal01</button>
+            <button type="button" class="modal__button modal__button--open js-modal-open"
+              aria-controls="modal02">modal02</button>
+            <button type="button" class="modal__button modal__button--open js-modal-open"
+              aria-controls="modal03">modal03</button>
+            <button type="button" class="modal__button modal__button--open js-modal-open"
+              aria-controls="modal04">modal04</button>
+          </nav>
+
+          <dialog id="modal01" class="modal js-modal" aria-labelledby="modal01-title" aria-modal="true">
+            <div class="modal__body">
+              <h3 id="modal01-title" class="modal__title">modal01</h3>
+              <p class="modal__text">
+                モーダルは、ポップアップのように画面の中央に表示されるUI要素で、ユーザーの操作を妨げることなく追加情報を表示する際に使用されます。
+              </p>
+              <button type="button" class="modal__button-icon js-modal-close" aria-controls="modal01"
+                aria-label="モーダルを閉じる">
+                <span class="modal__button-icon-line"></span>
+                <span class="u-visually-hidden">モーダルを閉じる</span>
+              </button>
+              <button type="button" class="modal__button modal__button--close js-modal-close"
+                aria-controls="modal01">close</button>
+            </div>
+          </dialog>
+
+          <dialog id="modal02" class="modal js-modal" aria-labelledby="modal02-title" aria-modal="true">
+            <div class="modal__body">
+              <h3 id="modal02-title" class="modal__title">modal02</h3>
+              <p class="modal__text">
+                モーダルは、ポップアップのように画面の中央に表示されるUI要素で、ユーザーの操作を妨げることなく追加情報を表示する際に使用されます。
+                モーダルの開閉はJavaScriptで制御し、背景のオーバーレイを追加してフォーカスをモーダル内に限定することで、ユーザビリティを向上させます。
+              </p>
+              <button type="button" class="modal__button-icon js-modal-close" aria-controls="modal02"
+                aria-label="モーダルを閉じる">
+                <span class="modal__button-icon-line"></span>
+                <span class="u-visually-hidden">モーダルを閉じる</span>
+              </button>
+              <button type="button" class="modal__button modal__button--close js-modal-close"
+                aria-controls="modal02">close</button>
+            </div>
+          </dialog>
+
+          <dialog id="modal03" class="modal js-modal" aria-labelledby="modal03-title" aria-modal="true">
+            <div class="modal__body">
+              <h3 id="modal03-title" class="modal__title">modal03</h3>
+              <p class="modal__text">
+                モーダルは、ポップアップのように画面の中央に表示されるUI要素で、ユーザーの操作を妨げることなく追加情報を表示する際に使用されます。
+                モーダルの開閉はJavaScriptで制御し、背景のオーバーレイを追加してフォーカスをモーダル内に限定することで、ユーザビリティを向上させます。
+                閉じるボタンやESCキーでのクローズ処理も重要です。
+              </p>
+              <button type="button" class="modal__button-icon js-modal-close" aria-controls="modal03"
+                aria-label="モーダルを閉じる">
+                <span class="modal__button-icon-line"></span>
+                <span class="u-visually-hidden">モーダルを閉じる</span>
+              </button>
+              <button type="button" class="modal__button modal__button--close js-modal-close"
+                aria-controls="modal03">close</button>
+            </div>
+          </dialog>
+
+          <dialog id="modal04" class="modal js-modal" aria-labelledby="modal04-title" aria-modal="true">
+            <div class="modal__body">
+              <h3 id="modal04-title" class="modal__title">modal04</h3>
+              <p class="modal__text">
+                モーダルは、ポップアップのように画面の中央に表示されるUI要素で、ユーザーの操作を妨げることなく追加情報を表示する際に使用されます。
+                モーダルの開閉はJavaScriptで制御し、背景のオーバーレイを追加してフォーカスをモーダル内に限定することで、ユーザビリティを向上させます。
+                閉じるボタンやESCキーでのクローズ処理も重要です。
+              </p>
+              <button type="button" class="modal__button-icon js-modal-close" aria-controls="modal04"
+                aria-label="モーダルを閉じる">
+                <span class="modal__button-icon-line"></span>
+                <span class="u-visually-hidden">モーダルを閉じる</span>
+              </button>
+              <button type="button" class="modal__button modal__button--close js-modal-close"
+                aria-controls="modal04">close</button>
+            </div>
+          </dialog>
+        </div>
+      </div>
+    </section>
+    <!-- modal end -->
+
+    <!-- slider -->
+    <section id="slider" class="slider01 l-section">
+      <div class="l-container">
+        <h2 class="c-heading-lv2 c-heading-lv2--center">slider01</h2>
+        <div class="slider01__inner l-inner">
+          <div class="slider01__area">
+            <div class="swiper swiper01">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide swiper-slide01">
+                  <figure class="slider01__img">
+                    <img src="images/image01.jpg" alt="イメージの説明が入ります" width="1920" height="1280" loading="lazy">
+                  </figure>
+                </div>
+
+                <div class="swiper-slide swiper-slide01">
+                  <figure class="slider01__img">
+                    <img src="images/image02.jpg" alt="イメージの説明が入ります" width="1920" height="1280" loading="lazy">
+                  </figure>
+                </div>
+
+                <div class="swiper-slide swiper-slide01">
+                  <figure class="slider01__img">
+                    <img src="images/image03.jpg" alt="イメージの説明が入ります" width="1920" height="1280" loading="lazy">
+                  </figure>
+                </div>
+
+                <div class="swiper-slide swiper-slide01">
+                  <figure class="slider01__img">
+                    <img src="images/image04.jpg" alt="イメージの説明が入ります" width="1920" height="1281" loading="lazy">
+                  </figure>
+                </div>
+
+                <div class="swiper-slide swiper-slide01">
+                  <figure class="slider01__img">
+                    <img src="images/image05.jpg" alt="イメージの説明が入ります" width="1920" height="1362" loading="lazy">
+                  </figure>
+                </div>
+
+                <div class="swiper-slide swiper-slide01">
+                  <figure class="slider01__img">
+                    <img src="images/image06.jpg" alt="イメージの説明が入ります" width="1920" height="1280" loading="lazy">
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-button-prev swiper-button-prev01">
+              <span class="c-arrow"></span>
+            </div>
+            <div class="swiper-button-next swiper-button-next01">
+              <span class="c-arrow"></span>
+            </div>
+            <div class="swiper-pagination swiper-pagination01"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slider02 l-section">
+      <div class="l-container">
+        <h2 class="c-heading-lv2 c-heading-lv2--center">slider02</h2>
+        <div class="slider__inner l-inner">
+          <div class="slider02__area">
+            <div class="swiper swiper02">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide swiper-slide02">
+                  <a href="#accordion" class="slider02__link">
+                    <div class="slider02__card">
+                      <figure class="slider02__img">
+                        <img src="images/image01.jpg" alt="イメージの説明が入ります" width="1920" height="1280" loading="lazy">
+                      </figure>
+                      <div class="slider02__desc">
+                        <h3 class="slider02__title">accordion</h3>
+                        <p class="slider02__text">アコーディオンは、クリックすると隠れていたコンテンツが展開されるインターフェース要素です。FAQセクションなどでよく使用されます。</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="swiper-slide swiper-slide02">
+                  <a href="#dropdown" class="slider02__link">
+                    <div class="slider02__card">
+                      <figure class="slider02__img">
+                        <img src="images/image02.jpg" alt="イメージの説明が入ります" width="1920" height="1280" loading="lazy">
+                      </figure>
+                      <div class="slider02__desc">
+                        <h3 class="slider02__title">dropdown</h3>
+                        <p class="slider02__text">
+                          ドロップダウンメニューは、クリックまたはホバーで開閉するナビゲーション要素の一つです。主にナビゲーションバーやフォームで選択肢を表示するために使用されます。
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="swiper-slide swiper-slide02">
+                  <a href="#tab" class="slider02__link">
+                    <div class="slider02__card">
+                      <figure class="slider02__img">
+                        <img src="images/image03.jpg" alt="イメージの説明が入ります" width="1920" height="1280" loading="lazy">
+                      </figure>
+                      <div class="slider02__desc">
+                        <h3 class="slider02__title">tab</h3>
+                        <p class="slider02__text">
+                          タブは、複数のコンテンツを切り替えて表示するUIコンポーネントです。通常、ボタンやリスト要素でタブを作成し、クリックすると対応するコンテンツを表示します。
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="swiper-slide swiper-slide02">
+                  <a href="#modal-window" class="slider02__link">
+                    <div class="slider02__card">
+                      <figure class="slider02__img">
+                        <img src="images/image04.jpg" alt="イメージの説明が入ります" width="1920" height="1280" loading="lazy">
+                      </figure>
+                      <div class="slider02__desc">
+                        <h3 class="slider02__title">modal</h3>
+                        <p class="slider02__text">モーダルは、ポップアップのように画面の中央に表示されるUI要素で、ユーザーの操作を妨げることなく追加情報を表示する際に使用されます。</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="swiper-slide swiper-slide02">
+                  <a href="#slider" class="slider02__link">
+                    <div class="slider02__card">
+                      <figure class="slider02__img">
+                        <img src="images/image05.jpg" alt="イメージの説明が入ります" width="1920" height="1280" loading="lazy">
+                      </figure>
+                      <div class="slider02__desc">
+                        <h3 class="slider02__title">slider</h3>
+                        <p class="slider02__text">
+                          スライダーは、画像やコンテンツを横または縦にスライドして表示するUIコンポーネントです。カルーセルとも呼ばれ、商品の紹介やギャラリーに使われます。
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="swiper-slide swiper-slide02">
+                  <a href="#contact" class="slider02__link">
+                    <div class="slider02__card">
+                      <figure class="slider02__img">
+                        <img src="images/image06.jpg" alt="イメージの説明が入ります" width="1920" height="1280" loading="lazy">
+                      </figure>
+                      <div class="slider02__desc">
+                        <h3 class="slider02__title">contact</h3>
+                        <p class="slider02__text">リンクをクリックすると、指定したページに遷移します。</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-button-prev swiper-button-prev02">
+              <span class="c-arrow"></span>
+            </div>
+            <div class="swiper-button-next swiper-button-next02">
+              <span class="c-arrow"></span>
+            </div>
+            <div class="swiper-pagination swiper-pagination02"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- slider end -->
+
+    <!-- contact -->
+    <section id="contact" class="contact l-section">
+      <div class="l-container">
+        <h2 class="c-heading-lv2 c-heading-lv2--center">contact</h2>
+        <div class="contact__inner l-inner">
+          <form action="#" method="post" id="form" class="form js-form">
+            <h2 class="form__heading">お問い合わせフォーム</h2>
+            <div class="form__body">
+
+              <!-- name -->
+              <div class="form__item js-form__item">
+                <label for="name" class="form__label">お名前<strong class="form__label--required">必須</strong></label>
+                <span class="form__error js-form__error"></span>
+                <input type="text" name="name" id="name" class="form__input js-form__input">
+              </div>
+
+              <!-- tel -->
+              <div class="form__item js-form__item">
+                <label for="tel" class="form__label">電話番号<strong class="form__label--required">必須</strong></label>
+                <span class="form__error js-form__error"></span>
+                <input type="tel" name="tel" id="tel" class="form__input js-form__input">
+              </div>
+
+              <!-- email -->
+              <div class="form__item js-form__item">
+                <label for="email" class="form__label">メールアドレス<strong class="form__label--required">必須</strong></label>
+                <span class="form__error js-form__error"></span>
+                <input type="email" name="email" id="email" class="form__input js-form__input">
+              </div>
+
+              <!--  confirm email -->
+              <div class="form__item js-form__item">
+                <label for="confirm-email" class="form__label">メールアドレス(確認用)
+                  <strong class="form__label--required">必須</strong></label>
+                <span class="form__error js-form__error"></span>
+                <input type="email" name="confirm-email" id="confirm-email" class="form__input js-form__input">
+              </div>
+
+              <!-- age -->
+              <div class="form__item js-form__item">
+                <label for="age" class="form__label">年齢<strong class="form__label--required">必須</strong></label>
+                <span class="form__error js-form__error"></span>
+                <input type="number" name="age" id="age" class="form__input js-form__input">
+              </div>
+
+              <!-- postal-code -->
+              <div class="form__item js-form__item">
+                <label for="postal-code" class="form__label">郵便番号
+                  <strong class="form__label--required">必須</strong></label>
+                <span class="form__error js-form__error"></span>
+                <input type="text" name="postal-code" id="postal-code" class="form__input js-form__input">
+              </div>
+
+              <!-- address-level1 -->
+              <div class="form__item js-form__item">
+                <label for="address-level1" class="form__label">都道府県
+                  <strong class="form__label--required">必須</strong></label>
+                <span class="form__error js-form__error"></span>
+                <input type="text" name="address-level1" id="address-level1" class="form__input js-form__input">
+              </div>
+
+              <!-- address-level2 -->
+              <div class="form__item js-form__item">
+                <label for="address-level2" class="form__label">市区町村
+                  <strong class="form__label--required">必須</strong></label>
+                <span class="form__error js-form__error"></span>
+                <input type="text" name="address-level2" id="address-level2" class="form__input js-form__input">
+              </div>
+
+              <!-- address-line1 -->
+              <div class="form__item js-form__item">
+                <label for="address-line1" class="form__label">番地
+                  <strong class="form__label--required">必須</strong></label>
+                <span class="form__error js-form__error"></span>
+                <input type="text" name="address-line1" id="address-line1" class="form__input js-form__input">
+              </div>
+
+              <!-- address-line2 -->
+              <div class="form__item js-form__item">
+                <label for="address-line2" class="form__label">建物名・部屋番号
+                  <strong class="form__label--required">必須</strong></label>
+                <span class="form__error js-form__error"></span>
+                <input type="text" name="address-line2" id="address-line2" class="form__input js-form__input">
+              </div>
+
+              <!-- gender -->
+              <div class="form__item js-form__item">
+                <span class="form__label">性別<strong class="form__label--required">必須</strong></span>
+                <span class="form__error js-form__error"></span>
+                <div class="form__group">
+                  <div class="form__group-item">
+                    <input type="radio" name="gender" id="male" class="form__input js-form__input" value="男性">
+                    <label for="male" class="form__group-text">男性</label>
+                  </div>
+
+                  <div class="form__group-item">
+                    <input type="radio" name="gender" id="female" class="form__input js-form__input" value='女性'>
+                    <label for="female" class="form__group-text">女性</label>
+                  </div>
+
+                  <div class="form__group-item">
+                    <input type="radio" name="gender" id="other" class="form__input js-form__input" value="その他">
+                    <label for="other" class="form__group-text">その他</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- business -->
+              <div class="form__item js-form__item">
+                <label for="business" class="form__label">ご職業<strong class="form__label--required">必須</strong></label>
+                <span class="form__error js-form__error"></span>
+                <select name="business" id="business" class="form__input js-form__input">
+                  <option value="" disabled selected>選択してください</option>
+                  <option value="会社員">会社員</option>
+                  <option value="派遣社員">派遣社員</option>
+                  <option value="アルバイト(パート)">アルバイト(パート)</option>
+                  <option value="個人事業主">個人事業主</option>
+                  <option value="無職">無職</option>
+                </select>
+              </div>
+
+              <!-- category -->
+              <div class="form__item js-form__item">
+                <span class="form__label">お問い合わせ種別<strong class="form__label--required">必須</strong></span>
+                <span class="form__error js-form__error"></span>
+                <div class="form__group">
+                  <div class="form__group-item">
+                    <input type="radio" name="category" id="material" class="form__input js-form__input" value="資料請求">
+                    <label for="material">資料請求</label>
+                  </div>
+
+                  <div class="form__group-item">
+                    <input type="radio" name="category" id="message" class="form__input js-form__input" value="お問い合わせ">
+                    <label for="message">お問い合わせ</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- material -->
+              <div class="form__item js-form__item">
+                <span class="form__label">資料請求<strong class="form__label--required">必須</strong></span>
+                <span class="form__error js-form__error"></span>
+                <div class="form__group">
+                  <div class="form__group-item">
+                    <input type="radio" name="material-type" id="material01" class="form__input js-form__input"
+                      value="資料A">
+                    <label for="material01" class="form__group-text">資料A</label>
+                  </div>
+
+                  <div class="form__group-item">
+                    <input type="radio" name="material-type" id="material02" class="form__input js-form__input"
+                      value="資料B">
+                    <label for="material02" class="form__group-text">資料B</label>
+                  </div>
+
+                  <div class="form__group-item">
+                    <input type="radio" name="material-type" id="material03" class="form__input js-form__input"
+                      value="資料C">
+                    <label for="material03" class="form__group-text">資料C</label>
+                  </div>
+
+                  <div class="form__group-item">
+                    <input type="radio" name="material-type" id="material04" class="form__input js-form__input"
+                      value="資料D">
+                    <label for="material04" class="form__group-text">資料D</label>
+                  </div>
+
+                  <div class="form__group-item">
+                    <input type="radio" name="material-type" id="material05" class="form__input js-form__input"
+                      value="資料E">
+                    <label for="material05" class="form__group-text">資料E</label>
+                  </div>
+
+                  <div class="form__group-item">
+                    <input type="radio" name="material-type" id="material06" class="form__input js-form__input"
+                      value="資料F">
+                    <label for="material06" class="form__group-text">資料F</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- textarea -->
+              <div class="form__item js-form__item">
+                <label for="textarea" class="form__label">お問い合わせ内容
+                  <strong class="form__label--required">必須</strong></label>
+                <span class="form__error js-form__error"></span>
+                <textarea name="textarea" id="textarea" class="form__input js-form__input"></textarea>
+              </div>
+
+              <!-- consent -->
+              <div class="form__item js-form__item">
+                <span class="form__label">利用規約に同意する<strong class="form__label--required">必須</strong></span>
+                <span class="form__error js-form__error"></span>
+                <div class="form__group">
+                  <div class="form__group-item">
+                    <input type="checkbox" name="consent" id="consent" class="form__input js-form__input" value="同意する">
+                    <label for="consent" class="form__group-text">同意する</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- submit -->
+              <button type="submit" class="form__button js-form__button">送信</button>
+            </div>
+          </form>
+        </div>
+    </section>
+    <!-- contact end -->
+  </main>
+
+  <!-- footer -->
+  <footer id="footer" class="footer l-section">
+    <div class="footer__inner">
+      <h2 class="footer-logo">
+        <a href="index.html" class="footer-logo__link">footer</a>
+      </h2>
+
+      <nav class="footer-nav" aria-label="メインナビゲーション">
+        <ul class="footer-nav__list">
+          <li class="footer-nav__item">
+            <a href="#accordion" class="footer-nav__link">accordion</a>
+          </li>
+          <li class="footer-nav__item">
+            <a href="#dropdown" class="footer-nav__link">dropdown</a>
+          </li>
+          <li class="footer-nav__item">
+            <a href="#tab" class="footer-nav__link">tab</a>
+          </li>
+          <li class="footer-nav__item">
+            <a href="#modal-window" class="footer-nav__link">modal</a>
+          </li>
+          <li class="footer-nav__item">
+            <a href="#slider" class="footer-nav__link">slider</a>
+          </li>
+          <li class="footer-nav__item">
+            <a href="#contact" class="footer-nav__link">contact</a>
+          </li>
+        </ul>
+      </nav>
+      <small class="footer__copyright">&copy;2025 copyright</small>
+    </div>
+  </footer>
+  <!-- footer end -->
+
+  <!-- back-to-top -->
+  <div class="l-back-to-top js-back-to-top">
+    <button type="button" class="c-arrow" aria-label="トップへ戻る">
+      <span class="u-visually-hidden">トップへ戻る</span>
+    </button>
+  </div>
+</body>
+
+</html>
