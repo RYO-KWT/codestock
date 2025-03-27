@@ -511,7 +511,7 @@
         if (!postalCode.value.trim()) {
           showError(postalCode, errorFiled);
           return false;
-        } else if (!pattern.test(age.value.trim())) {
+        } else if (!pattern.test(postalCode.value.trim())) {
           showError(postalCode, errorFormat);
           return false;
         } else {
@@ -709,10 +709,10 @@
         addressLevel2.addEventListener('focusout', validateAddressLevel2);
         addressLine1.addEventListener('focusout', validateAddressLine1);
         addressLine2.addEventListener('focusout', validateAddressLine2);
-        genders.forEach(el => el.addEventListener('focusout', validateGender));
+        genders.forEach(el => el.addEventListener('change', validateGender));
         business.addEventListener('focusout', validateBusiness);
-        categories.forEach(el => el.addEventListener('focusout', validateCategory));
-        materials.forEach(el => el.addEventListener('focusout', validateMaterial));
+        categories.forEach(el => el.addEventListener('change', validateCategory));
+        materials.forEach(el => el.addEventListener('change', validateMaterial));
         textarea.addEventListener('focusout', validateTextArea);
         consent.addEventListener('change', validateConsent);
         form.addEventListener('submit', (e) => {
