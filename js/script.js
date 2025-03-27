@@ -1,6 +1,37 @@
 'use strict';
 {
   document.addEventListener('DOMContentLoaded', () => {
+
+    const handleFocusTrap = (e, container, focusableSelectors, trigger) => {
+      const focusableElements = [trigger, ...container.querySelectorAll(focusableSelectors)];
+      if (!focusableElements.length) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.key !== 'Tab') return;
+
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement.focus();
+      } else if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    const handleEscapeKey = (e, closeCallback) => {
+      if (e.key !== 'Escape') return;
+
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeCallback();
+      }
+    };
+
+    const handleArrowKey = () => { };
+    const handleHomeEndKey = () => { };
+
     // setupScrollVisible
     const setupScrollVisible = () => {
       const header = document.querySelector('.js-header');
@@ -39,12 +70,21 @@
 
       if (!hamburger || !nav || !navLinks.length || !body) return;
 
+      const handleKeyDown = (e) => {
+        const selectors = ['.js-header-nav__link'];
+
+        if (!nav.classList.contains('is-active')) return;
+        handleFocusTrap(e, nav, selectors, hamburger);
+        handleEscapeKey(e, closeNav);
+      };
+
       const openNav = () => {
         hamburger.classList.add('is-active');
         hamburger.setAttribute('aria-expanded', 'true');
         hamburger.setAttribute('aria-label', 'メニューを閉じる');
         nav.classList.add('is-active');
         body.classList.add('is-active');
+        document.addEventListener('keydown', handleKeyDown);
       };
 
       const closeNav = () => {
@@ -53,6 +93,7 @@
         hamburger.setAttribute('aria-label', 'メニューを開く');
         nav.classList.remove('is-active');
         body.classList.remove('is-active');
+        document.removeEventListener('keydown', handleKeyDown);
       };
 
       const toggleNav = () => {
@@ -73,6 +114,14 @@
       const headers = document.querySelectorAll('.js-accordion__header');
       if (!headers.length) return;
 
+      const handleKeyDown = (e) => {
+        const activeItem = document.querySelector('.js-accordion__item.is-active');
+        if (activeItem) {
+          const activeHeader = activeItem.querySelector('.js-accordion__header');
+          handleEscapeKey(e, () => closeAccordion(activeHeader));
+        }
+      };
+
       const openAccordion = (header) => {
         const item = header.closest('.js-accordion__item');
         const body = item.querySelector('.js-accordion__body');
@@ -83,6 +132,7 @@
         item.classList.add('is-active');
         body.setAttribute('aria-hidden', 'false');
         requestAnimationFrame(() => body.style.maxHeight = `${body.scrollHeight}px`);
+        document.addEventListener('keydown', handleKeyDown);
       };
 
       const closeAccordion = (header) => {
@@ -95,6 +145,8 @@
         body.style.maxHeight = '0px';
         body.setAttribute('aria-hidden', 'true');
         setTimeout(() => item.removeAttribute('open'), 300);
+        document.removeEventListener('keydown', handleKeyDown);
+
       };
 
       const toggleAccordion = (e) => {
@@ -121,7 +173,6 @@
 
     // dropdown
     const setupDropdown = () => {
-
       const hamburger = document.querySelector('.js-dropdown-hamburger');
       const nav = document.querySelector('.js-dropdown-nav');
       const navItems = document.querySelectorAll('.js-dropdown-nav__item');
@@ -132,12 +183,29 @@
 
       const isHoverDevice = window.matchMedia('(any-hover: hover)').matches;
 
+      const handleKeyDown = (e) => {
+        if (!nav.classList.contains('is-active')) return;
+
+        const navSelectors = ['.js-dropdown-nav__header'];
+        const itemSelectors = ['.js-dropdown-nav__header', '.js-dropdown-body__link'];
+        const activeItem = Array.from(navItems).some(item => item.classList.contains('is-active'));
+
+        if (activeItem) {
+          handleFocusTrap(e, nav, itemSelectors, hamburger);
+          handleEscapeKey(e, closeItem);
+        } else {
+          handleFocusTrap(e, nav, navSelectors, hamburger);
+          handleEscapeKey(e, closeNav);
+        }
+      };
+
       const openNav = () => {
         hamburger.classList.add('is-active');
         hamburger.setAttribute('aria-expanded', 'true');
         hamburger.setAttribute('aria-label', 'メニューを閉じる');
         nav.classList.add('is-active');
         body.classList.add('is-active');
+        document.addEventListener('keydown', handleKeyDown);
       };
 
       const closeNav = () => {
@@ -148,9 +216,8 @@
         body.classList.remove('is-active');
 
         const activeItems = document.querySelectorAll('.js-dropdown-nav__item.is-active');
-        activeItems.forEach(activeItem => {
-          closeItem(activeItem.querySelector('.js-dropdown-nav__header'));
-        });
+        activeItems.forEach(activeItem => closeItem(activeItem.querySelector('.js-dropdown-nav__header')));
+        document.removeEventListener('keydown', handleKeyDown);
       };
 
       const toggleNav = () => {
