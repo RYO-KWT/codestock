@@ -984,6 +984,7 @@ dialog::backdrop {
 
 .form__group-item {
   display: flex;
+  align-items: center;
 }
 
 .form__label {
