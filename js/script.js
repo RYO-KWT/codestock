@@ -1,9 +1,13 @@
 'use strict';
 {
   document.addEventListener('DOMContentLoaded', () => {
-
+    // FocusTrap
     const handleFocusTrap = (e, container, focusableSelectors, trigger) => {
-      const focusableElements = [trigger, ...container.querySelectorAll(focusableSelectors)];
+      const focusableElements = [
+        ...(trigger ? [trigger] : []),
+        ...Array.from(container.querySelectorAll(focusableSelectors))
+      ];
+
       if (!focusableElements.length) return;
 
       const firstElement = focusableElements[0];
@@ -20,16 +24,45 @@
       }
     };
 
+    // EscapeKey
     const handleEscapeKey = (e, closeCallback) => {
-      if (e.key !== 'Escape') return;
-
       if (e.key === 'Escape') {
         e.preventDefault();
         closeCallback();
       }
     };
 
-    const handleArrowKey = () => { };
+    // ArrowKey
+    const handleArrowKey = (e, container, focusableSelectors, trigger) => {
+      const focusableElements = [
+        ...(trigger ? [trigger] : []),
+        ...Array.from(container.querySelectorAll(focusableSelectors))
+      ];
+
+      if (!focusableElements.length) return;
+
+      const currentIndex = focusableElements.indexOf(document.activeElement);
+
+      const focusNext = () => {
+        const nextIndex = (currentIndex + 1) % focusableElements.length;
+        focusableElements[nextIndex].focus();
+      };
+
+      const focusPrev = () => {
+        const prevIndex = (currentIndex - 1 + focusableElements.length) % focusableElements.length;
+        focusableElements[prevIndex].focus();
+      };
+
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+        e.preventDefault();
+        focusNext();
+      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        focusPrev();
+      }
+    };
+
+    // HomeEndKey
     const handleHomeEndKey = () => { };
 
     // setupScrollVisible
@@ -76,6 +109,7 @@
         if (!nav.classList.contains('is-active')) return;
         handleFocusTrap(e, nav, selectors, hamburger);
         handleEscapeKey(e, closeNav);
+        handleArrowKey(e, nav, selectors, hamburger);
       };
 
       const openNav = () => {
@@ -188,14 +222,17 @@
 
         const navSelectors = ['.js-dropdown-nav__header'];
         const itemSelectors = ['.js-dropdown-nav__header', '.js-dropdown-body__link'];
-        const activeItem = Array.from(navItems).some(item => item.classList.contains('is-active'));
-
+        const activeItem = document.querySelector('.js-dropdown-nav__item.is-active');
+        
         if (activeItem) {
+          const activeHeader = activeItem.querySelector('.js-dropdown-nav__header');
           handleFocusTrap(e, nav, itemSelectors, hamburger);
-          handleEscapeKey(e, closeItem);
+          handleEscapeKey(e, () => closeItem(activeHeader));
+          handleArrowKey(e, nav, itemSelectors, hamburger);
         } else {
           handleFocusTrap(e, nav, navSelectors, hamburger);
           handleEscapeKey(e, closeNav);
+          handleArrowKey(e, nav, navSelectors, hamburger);
         }
       };
 

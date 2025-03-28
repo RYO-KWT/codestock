@@ -19,7 +19,7 @@ body {
   font-size: sans-serif;
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.8;
   color: #333;
 }
 
@@ -266,7 +266,7 @@ img {
 }
 
 .header-nav__link {
-  padding: 8px;
+  padding: 16px;
   font-weight: bold;
   line-height: 1;
   transition: scale 0.3s, filter 0.3s;
@@ -321,7 +321,7 @@ img {
 
 
 .footer-nav__link {
-  padding: 8px;
+  padding: 16px;
   font-weight: bold;
   line-height: 1;
   transition: scale 0.3s, filter 0.3s;
@@ -576,7 +576,6 @@ summary::-webkit-details-marker {
   .dropdown-body {
     position: absolute;
     top: 100%;
-    padding: 16px;
     border-radius: 8px;
     box-shadow: 0 0 8px 0 rgb(0 0 0 /0.1);
     background: #fcfcfc;
@@ -589,7 +588,7 @@ summary::-webkit-details-marker {
 }
 
 .dropdown-body__link {
-  padding: 8px;
+  padding: 16px;
   font-weight: bold;
   line-height: 1;
   transition: scale 0.3s, filter 0.3s;
