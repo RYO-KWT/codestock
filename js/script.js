@@ -63,7 +63,24 @@
     };
 
     // HomeEndKey
-    const handleHomeEndKey = () => { };
+    const handleHomeEndKey = (e, container, focusableSelectors, trigger) => {
+      const focusableElements = [
+        ...(trigger ? [trigger] : []),
+        ...Array.from(container.querySelectorAll(focusableSelectors))
+      ];
+
+      if (!focusableElements.length) return;
+
+      if (e.key === "Home") {
+        e.preventDefault();
+        focusableElements[0].focus();
+      }
+
+      else if (e.key === "End") {
+        e.preventDefault();
+        focusableElements[focusableElements.length - 1].focus();
+      }
+    };
 
     // setupScrollVisible
     const setupScrollVisible = () => {
@@ -104,12 +121,13 @@
       if (!hamburger || !nav || !navLinks.length || !body) return;
 
       const handleKeyDown = (e) => {
-        const selectors = ['.js-header-nav__link'];
+        const selectors = '.js-header-nav__link';
 
         if (!nav.classList.contains('is-active')) return;
         handleFocusTrap(e, nav, selectors, hamburger);
         handleEscapeKey(e, closeNav);
         handleArrowKey(e, nav, selectors, hamburger);
+        handleHomeEndKey(e, nav, selectors, hamburger);
       };
 
       const openNav = () => {
@@ -220,10 +238,12 @@
       const handleKeyDown = (e) => {
         if (!nav.classList.contains('is-active')) return;
 
-        const navSelectors = ['.js-dropdown-nav__header'];
-        const itemSelectors = ['.js-dropdown-nav__header', '.js-dropdown-body__link'];
+        const navSelectors = '.js-dropdown-nav__header';
+        const itemSelectors = '.js-dropdown-nav__header, .js-dropdown-body__link';
         const activeItem = document.querySelector('.js-dropdown-nav__item.is-active');
-        
+
+        handleHomeEndKey(e, nav, navSelectors, hamburger);
+
         if (activeItem) {
           const activeHeader = activeItem.querySelector('.js-dropdown-nav__header');
           handleFocusTrap(e, nav, itemSelectors, hamburger);
@@ -324,8 +344,15 @@
 
     // tab
     const setupTab = () => {
+      const tab = document.querySelector('.js-tab');
       const headers = document.querySelectorAll('.js-tab-nav__header');
       if (!headers.length) return;
+
+      const handleKeyDown = (e) => {
+        const selectors = '.js-tab-nav__header';
+        handleArrowKey(e, tab, selectors);
+        handleHomeEndKey(e, tab, selectors);
+      };
 
       const openTab = (header) => {
         const bodyId = header.getAttribute('aria-controls');
@@ -361,7 +388,10 @@
       };
 
       const addEvent = () => {
-        headers.forEach(header => header.addEventListener('click', toggleTab));
+        headers.forEach(header => {
+          header.addEventListener('click', toggleTab);
+          header.addEventListener('keydown', handleKeyDown);
+        });
       };
 
       addEvent();
@@ -372,8 +402,21 @@
       const modals = document.querySelectorAll('.js-modal');
       const openButtons = document.querySelectorAll('.js-modal-open');
       const closeButtons = document.querySelectorAll('.js-modal-close');
+      const closeIconButtons = document.querySelectorAll('.js-modal-close-icon');
       const body = document.querySelector('.js-body');
       if (!modals.length || !openButtons.length || !closeButtons.length || !body) return;
+
+      const handleKeyDown = (e) => {
+        const activeModal = document.querySelector('.js-modal.is-active');
+        if (!activeModal) return;
+        const selectors = '.js-modal-close, .js-modal-close-icon';
+
+        if (activeModal) {
+          handleFocusTrap(e, activeModal, selectors);
+          handleArrowKey(e, activeModal, selectors);
+          handleHomeEndKey(e, activeModal, selectors);
+        }
+      };
 
       const openModal = (e) => {
         const button = e.currentTarget;
@@ -383,6 +426,7 @@
         modal.showModal();
         modal.classList.add('is-active');
         body.classList.add('is-active');
+        document.addEventListener('keydown', handleKeyDown);
       };
 
       const closeModal = (e) => {
@@ -393,11 +437,13 @@
         body.classList.remove('is-active');
         modal.classList.remove('is-active');
         setTimeout(() => modal.close(), 300);
+        document.removeEventListener('keydown', handleKeyDown);
       };
 
       const addEvent = () => {
-        openButtons.forEach(el => el.addEventListener('click', (e) => openModal(e)));
-        closeButtons.forEach(el => el.addEventListener('click', (e) => closeModal(e)));
+        openButtons.forEach(el => el.addEventListener('click',openModal));
+        closeButtons.forEach(el => el.addEventListener('click',closeModal));
+        closeIconButtons.forEach(el => el.addEventListener('click',closeModal));
         modals.forEach(el => el.addEventListener('click', (e) => {
           if (e.target === el) closeModal({ currentTarget: el.querySelector('.js-modal-close') });
         }));
@@ -503,6 +549,13 @@
         !postalCode || !addressLevel1 || !addressLevel2 || !addressLine1 ||
         !addressLine2 || !business || !categories || !genders || !materials ||
         !textarea || !consent || !button) return;
+
+      const handleKeyDown = (e) => {
+        const selectors = '.js-form__input, .js-form__button';
+
+        handleArrowKey(e, form, selectors);
+        handleHomeEndKey(e, form, selectors);
+      };
 
       const showError = (element, message) => {
         const item = element.closest('.js-form__item');
@@ -819,6 +872,7 @@
         materials.forEach(el => el.addEventListener('change', validateMaterial));
         textarea.addEventListener('focusout', validateTextArea);
         consent.addEventListener('change', validateConsent);
+        form.addEventListener('keydown', handleKeyDown);
         form.addEventListener('submit', (e) => {
           e.preventDefault();
           if (validateForm()) {
